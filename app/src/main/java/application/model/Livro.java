@@ -10,6 +10,8 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "livros")
+@Getter
+@Setter
 public class Livro{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

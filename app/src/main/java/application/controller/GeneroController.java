@@ -7,6 +7,7 @@
  import org.springframework.web.bind.annotation.RequestMethod;
  import org.springframework.web.bind.annotation.RequestParam;
 
+ 
  import application.repository.GeneroRepository;
  import application.model.Genero;
  @Controller
@@ -16,7 +17,7 @@
     @Autowired
     private GeneroRepository generoRepo;
 
-    @RequestMapping(value ="/insert")
+    @RequestMapping("/insert")
     public String insert() {
         return "/generos/insert";
     }
@@ -31,11 +32,38 @@
 
         return "redirect:/genero/list";
         }
-        @RequestMapping("/List")
+        @RequestMapping("/list")
         public String getAll(Model ui) {
             ui.addAttribute("generos", generoRepo.findAll());
             return "/generos/List";
 
         }
- }    
+        @RequestMapping("/update")
+        public String update(@RequestParam("id") long id, Model ui) {
+            Optional<Genero> resultado = generoRepo.findById(id);
+    
+            if(resultado.isPresent()) {
+                ui.addAttribute("genero", resultado.get());
+                return "/generos/update";
+            }
+    
+            return "redirect:/generos/list";
+        }
+    
+        @RequestMapping(value="/update", method=RequestMethod.POST)
+        public String update(
+            @RequestParam("id") long id,
+            @RequestParam("nome") String nome) {
+            
+            Optional<Genero> resultado = generoRepo.findById(id);
+    
+            if(resultado.isPresent()) {
+                resultado.get().setNome(nome);
+                generoRepo.save(resultado.get());
+            }
+    
+            return "redirect:/generos/list";
+        }
+    }
+
     

@@ -8,7 +8,9 @@
     <title>Gêneros</title>
 </head>
 <body>
+    <div class="container"></div>
     <h1>Gêneros</h1>
+    <a hre="/generos/insert" class=""btn btn-defaut">Novo Gênero </a>
     <table>
         <tr>
             <th>id</th> 

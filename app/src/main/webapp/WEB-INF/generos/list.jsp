@@ -5,11 +5,19 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>Gêneros</title>
-</head>
+    </head>
 <body>
+    <h1>Novo Gênero</h1>
+    <form action="/generos/insert" method="post"></form>
     <div class="container"></div>
-    <h1>Gêneros</h1>
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Salvar</button>
+</form>
+</div>
     <a hre="/generos/insert" class=""btn btn-defaut">Novo Gênero </a>
     <table>
         <tr>
@@ -23,5 +31,6 @@
             </tr>
         <c:forEach
     </table>
-</body>
+    </div>
+ </body>
 </html>
